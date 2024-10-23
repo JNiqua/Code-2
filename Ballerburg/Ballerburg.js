@@ -73,11 +73,15 @@ function drawLandscape() {
 */
 function drawPlayground() {
     createCannons();
-    drawCannons();
     drawMountain();
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
 function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(imgData);
+    drawCannons();
+    requestAnimationFrame(gameLoop);
 }
 drawPlayground();
-gameLoop();
+requestAnimationFrame(gameLoop);
 //# sourceMappingURL=Ballerburg.js.map

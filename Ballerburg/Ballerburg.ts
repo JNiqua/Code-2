@@ -105,13 +105,18 @@ function drawLandscape() {
 
 function drawPlayground(): void {
     createCannons();
-    drawCannons();
     drawMountain();
+    const imgData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
 
 function gameLoop(): void {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(imgData)!!!!!
+    drawCannons();
 
+
+    requestAnimationFrame(gameLoop);
 }
 
 drawPlayground();
-gameLoop();
+requestAnimationFrame(gameLoop);
