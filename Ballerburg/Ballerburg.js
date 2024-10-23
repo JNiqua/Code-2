@@ -1,6 +1,30 @@
 "use strict";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const p1AngleSlider = document.getElementById("p1Angle");
+let p1Angle = Number(p1AngleSlider.value);
+const p1PowderSlider = document.querySelector(".POWAH");
+let p1Powder = Number(p1PowderSlider.value);
+const p2AngleSlider = document.getElementById("p2Angle");
+let p2Angle = Number(p2AngleSlider.value);
+const p2PowderSlider = document.getElementById("p2Powder");
+let p2Powder = Number(p2PowderSlider.value);
+p1AngleSlider.oninput = function () {
+    p1Angle = Number(p1AngleSlider.value);
+    console.log(p1Angle);
+};
+p1PowderSlider.oninput = function () {
+    p1Powder = Number(p1PowderSlider.value);
+    console.log(p1Powder);
+};
+p2AngleSlider.oninput = function () {
+    p2Angle = Number(p2AngleSlider.value);
+    console.log(p2Angle);
+};
+p2PowderSlider.oninput = function () {
+    p2Powder = Number(p2PowderSlider.value);
+    console.log(p2Powder);
+};
 const cannonsArray = [];
 function createCannons() {
     let cannon1 = {
@@ -52,4 +76,8 @@ function drawPlayground() {
     drawCannons();
     drawMountain();
 }
+function gameLoop() {
+}
 drawPlayground();
+gameLoop();
+//# sourceMappingURL=Ballerburg.js.map

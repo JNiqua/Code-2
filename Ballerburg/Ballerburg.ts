@@ -1,6 +1,35 @@
 const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
+const p1AngleSlider: HTMLInputElement = document.getElementById("p1Angle") as HTMLInputElement;
+let p1Angle: number = Number(p1AngleSlider.value);
+const p1PowderSlider: HTMLInputElement = document.querySelector(".POWAH")!;
+let p1Powder: number = Number(p1PowderSlider.value);
+const p2AngleSlider: HTMLInputElement = <HTMLInputElement>document.getElementById("p2Angle")!;
+let p2Angle: number = Number(p2AngleSlider.value);
+const p2PowderSlider: HTMLInputElement = document.getElementById("p2Powder")!;
+let p2Powder: number = Number(p2PowderSlider.value);
+
+p1AngleSlider.oninput = function(): void {
+    p1Angle = Number(p1AngleSlider.value);
+    console.log(p1Angle);
+}
+
+p1PowderSlider.oninput = function(): void {
+    p1Powder = Number(p1PowderSlider.value);
+    console.log(p1Powder);
+}
+
+p2AngleSlider.oninput = function(): void {
+    p2Angle = Number(p2AngleSlider.value);
+    console.log(p2Angle);
+}
+
+p2PowderSlider.oninput = function(): void {
+    p2Powder = Number(p2PowderSlider.value);
+    console.log(p2Powder);
+}
+
 interface Cannon {
     x: number,
     y: number,
@@ -80,4 +109,9 @@ function drawPlayground(): void {
     drawMountain();
 }
 
+function gameLoop(): void {
+
+}
+
 drawPlayground();
+gameLoop();
