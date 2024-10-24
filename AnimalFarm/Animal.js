@@ -10,5 +10,7 @@ class Animal {
         this.food = _food;
         this.consumeAmount = _consumeAmount;
     }
+    sing() {
+    }
 }
 //# sourceMappingURL=Animal.js.map

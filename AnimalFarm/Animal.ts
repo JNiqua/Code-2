@@ -16,4 +16,8 @@ class Animal {
         this.food = _food;
         this.consumeAmount = _consumeAmount;
     }
+
+    sing(): void {
+        
+    }
 }
