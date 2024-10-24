@@ -18,7 +18,7 @@ var MyfirstClass;
             this.y = _y;
         }
     }
-    let v1 = new Vector(5, 4);
+    const v1 = new Vector(5, 4);
     //v1.set(1, 4);
     v1.scale(2);
     console.log(v1);
