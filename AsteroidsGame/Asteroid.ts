@@ -50,6 +50,7 @@ namespace Asteroids {
             crc2.translate(-50, -50);
             crc2.stroke(asteroidPaths[this.type]);
             crc2.restore();
+            
         }
 
         isHit(_hotspot: Vector): boolean {

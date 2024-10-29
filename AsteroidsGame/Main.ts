@@ -55,6 +55,8 @@ namespace Asteroids {
                 let fragment: Asteroid = new Asteroid(_asteroid.size / 2, _asteroid.position);
                 fragment.velocity.add(_asteroid.velocity);
                 asteroids.push(fragment);
+
+                
             }
         }
         let index: number = asteroids.indexOf(_asteroid);
