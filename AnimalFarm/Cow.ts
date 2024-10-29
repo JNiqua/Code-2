@@ -10,9 +10,9 @@ namespace Farm {
         public doSpecialAction(): void {
             let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.cool) {
-                specialAction.textContent = `${this.name} puts on shades.`;
+                specialAction.textContent = `${this.name} put on shades.`;
             } else {
-                specialAction.textContent = `${this.name} runs in a circle.`;
+                specialAction.textContent = `${this.name} ran in a circle.`;
             }
         }
     }

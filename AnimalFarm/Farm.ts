@@ -9,7 +9,7 @@ namespace Farm {
     
     const cow: Animal = new Cow("Gisela", "Cow", "Mooh", hay, 5, true);
     stable.push(cow);
-    const chicken: Animal = new Chicken("Huun", "Chicken", "Bok Bok", seeds, 8);
+    const chicken: Animal = new Chicken("Huun", "Chicken", "Bok Bok", seeds, 8, true);
     stable.push(chicken);
     const pig: Animal = new Pig("Gunther", "Pig", "Oink", corpses, 1, true);
     stable.push(pig);
@@ -22,7 +22,7 @@ namespace Farm {
     callAnimal();
 
     function callAnimal(): void {
-        if(count<=stable.length) {
+        if(count<stable.length) {
             stable[count].sing();
             stable[count].eat();
             stable[count].doSpecialAction();

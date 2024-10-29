@@ -2,17 +2,17 @@
 var Farm;
 (function (Farm) {
     class Pig extends Farm.Animal {
-        constructor(_name, _species, _sound, _food, _consumeAmount, _cool) {
+        constructor(_name, _species, _sound, _food, _consumeAmount, _crazy) {
             super(_name, _species, _sound, _food, _consumeAmount);
-            this.cool = _cool;
+            this.crazy = _crazy;
         }
         doSpecialAction() {
             let specialAction = document.getElementById("specialAction");
-            if (this.cool) {
-                specialAction.textContent = `${this.name} 1.`;
+            if (this.crazy) {
+                specialAction.textContent = `${this.name} tried to revive its food.`;
             }
             else {
-                specialAction.textContent = `${this.name} runs in a circle.`;
+                specialAction.textContent = `${this.name} enjoyed its meal.`;
             }
         }
     }

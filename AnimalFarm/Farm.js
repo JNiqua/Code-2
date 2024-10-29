@@ -8,7 +8,7 @@ var Farm;
     const stable = [];
     const cow = new Farm.Cow("Gisela", "Cow", "Mooh", hay, 5, true);
     stable.push(cow);
-    const chicken = new Farm.Chicken("Huun", "Chicken", "Bok Bok", seeds, 8);
+    const chicken = new Farm.Chicken("Huun", "Chicken", "Bok Bok", seeds, 8, true);
     stable.push(chicken);
     const pig = new Farm.Pig("Gunther", "Pig", "Oink", corpses, 1, true);
     stable.push(pig);
@@ -19,7 +19,7 @@ var Farm;
     let count = 0;
     callAnimal();
     function callAnimal() {
-        if (count <= stable.length) {
+        if (count < stable.length) {
             stable[count].sing();
             stable[count].eat();
             stable[count].doSpecialAction();
