@@ -9,14 +9,14 @@ namespace Farm {
     
     const cow: Animal = new Cow("Gisela", "Cow", "Mooh", hay, 5, true);
     stable.push(cow);
-    // const chicken: Animal = new Chicken("Huun", "Chicken", "Bok Bok", seeds, 8, true);
+    // const chicken: Animal = new Chicken("Huun", "Chicken", "Bok Bok", seeds, 8);
     // stable.push(chicken);
-    const pig: Animal = new Pig("Gunther", "Pig", "Oink", corpses, 1, true);
-    stable.push(pig);
-    const sheep: Animal = new Sheep("Esmeralda", "Sheep", "Baaah", hay, 4, true);
-    stable.push(sheep);
-    const whale: Animal = new Whale("Angela", "Whale", "Ooof", krill, 7, true);
-    stable.push(whale);
+    // const pig: Animal = new Pig("Gunther", "Pig", "Oink", corpses, 1, true);
+    // stable.push(pig);
+    // const sheep: Animal = new Sheep("Esmeralda", "Sheep", "Baaah", hay, 4, true);
+    // stable.push(sheep);
+    // const whale: Animal = new Whale("Angela", "Whale", "Ooof", krill, 7, true);
+    // stable.push(whale);
     
     let count: number = 0;
     callAnimal();
@@ -25,7 +25,7 @@ namespace Farm {
         if(count<=stable.length) {
             stable[count].sing();
             stable[count].eat();
-            // stable[count].
+            stable[count].doSpecialAction();
             // cow.doSpecialAction();
             count++;
             console.log(count);

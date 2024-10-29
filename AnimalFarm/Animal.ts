@@ -32,6 +32,11 @@ namespace Farm {
             // food.innerText = fouod.toString();
             food.textContent = `${this.food.type}: ${foodAmount}`;
         }
+
+        doSpecialAction(): void {
+            // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+            // specialAction.textContent = "wörk?";
+        }
     }
 }
 

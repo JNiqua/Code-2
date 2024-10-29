@@ -1,19 +1,12 @@
 namespace Farm {
     export class Chicken extends Animal {
-        cool: boolean
-
-        constructor(_name: string, _species: string, _sound: string, _food: Food, _consumeAmount: number, _cool: boolean) {
+        constructor(_name: string, _species: string, _sound: string, _food: Food, _consumeAmount: number) {
             super(_name, _species, _sound, _food, _consumeAmount);
-            this.cool = _cool;
         }
 
-        public doSpecialAction() {
+        doSpecialAction(): void {
             let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
-            if(this.cool) {
-                specialAction.textContent = `${this.name} 4.`;
-            } else {
-                specialAction.textContent = `${this.name} runs in a circle.`;
-            }
+            specialAction.textContent = "täst";
         }
     }
 }

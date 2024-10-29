@@ -7,7 +7,7 @@ namespace Farm {
             this.cool = _cool;
         }
 
-        public doSpecialAction() {
+        public doSpecialAction(): void {
             let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.cool) {
                 specialAction.textContent = `${this.name} puts on shades.`;

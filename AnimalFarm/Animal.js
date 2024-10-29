@@ -24,6 +24,10 @@ var Farm;
             // food.innerText = fouod.toString();
             food.textContent = `${this.food.type}: ${foodAmount}`;
         }
+        doSpecialAction() {
+            // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+            // specialAction.textContent = "wörk?";
+        }
     }
     Farm.Animal = Animal;
 })(Farm || (Farm = {}));
