@@ -7,15 +7,15 @@ namespace Farm {
     
     const stable: Animal[] = [];
     
-    const cow: Animal = new Animal("Gisela", "Cow", "Mooh", hay, 5);
+    const cow: Animal = new Cow("Gisela", "Cow", "Mooh", hay, 5, true);
     stable.push(cow);
-    const chicken: Animal = new Animal("Huun", "Chicken", "Bok Bok", seeds, 8);
-    stable.push(chicken);
-    const pig: Animal = new Animal("Gunther", "Pig", "Oink", corpses, 1);
+    // const chicken: Animal = new Chicken("Huun", "Chicken", "Bok Bok", seeds, 8, true);
+    // stable.push(chicken);
+    const pig: Animal = new Pig("Gunther", "Pig", "Oink", corpses, 1, true);
     stable.push(pig);
-    const sheep: Animal = new Animal("Esmeralda", "Sheep", "Baaah", hay, 4);
+    const sheep: Animal = new Sheep("Esmeralda", "Sheep", "Baaah", hay, 4, true);
     stable.push(sheep);
-    const whale: Animal = new Animal("Angela", "Whale", "Ooof", krill, 7);
+    const whale: Animal = new Whale("Angela", "Whale", "Ooof", krill, 7, true);
     stable.push(whale);
     
     let count: number = 0;
@@ -25,6 +25,8 @@ namespace Farm {
         if(count<=stable.length) {
             stable[count].sing();
             stable[count].eat();
+            // stable[count].
+            // cow.doSpecialAction();
             count++;
             console.log(count);
             setTimeout(callAnimal, 3000)
