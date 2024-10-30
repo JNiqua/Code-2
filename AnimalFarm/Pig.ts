@@ -7,8 +7,8 @@ namespace Farm {
             this.crazy = _crazy;
         }
 
-        public doSpecialAction() {
-            let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+        doSpecialAction(): void {
+            const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.crazy) {
                 specialAction.textContent = `${this.name} tried to revive its food.`;
             } else {

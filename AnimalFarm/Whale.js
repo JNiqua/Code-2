@@ -7,7 +7,7 @@ var Farm;
             this.sad = _sad;
         }
         doSpecialAction() {
-            let specialAction = document.getElementById("specialAction");
+            const specialAction = document.getElementById("specialAction");
             if (this.sad) {
                 specialAction.textContent = `${this.name} got depressed.`;
             }

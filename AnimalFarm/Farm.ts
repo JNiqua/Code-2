@@ -15,7 +15,7 @@ namespace Farm {
     stable.push(pig);
     const sheep: Animal = new Sheep("Esmeralda", "Sheep", "Baaah", hay, 4, true);
     stable.push(sheep);
-    const whale: Animal = new Whale("Angela", "Whale", "Ooof", krill, 7, true);
+    const whale: Animal = new Whale("Angela", "Whale", "Ooof", krill, 7, false);
     stable.push(whale);
     
     let count: number = 0;

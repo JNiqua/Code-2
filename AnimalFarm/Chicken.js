@@ -7,7 +7,7 @@ var Farm;
             this.tired = _tired;
         }
         doSpecialAction() {
-            let specialAction = document.getElementById("specialAction");
+            const specialAction = document.getElementById("specialAction");
             if (this.tired) {
                 specialAction.textContent = `${this.name} slept all day.`;
             }

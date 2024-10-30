@@ -7,7 +7,7 @@ var Farm;
             this.angry = _angry;
         }
         doSpecialAction() {
-            let specialAction = document.getElementById("specialAction");
+            const specialAction = document.getElementById("specialAction");
             if (this.angry) {
                 specialAction.textContent = `${this.name} tore down the stable.`;
             }

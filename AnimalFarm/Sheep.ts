@@ -7,8 +7,8 @@ namespace Farm {
             this.angry = _angry;
         }
 
-        public doSpecialAction() {
-            let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+        doSpecialAction(): void {
+            const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.angry) {
                 specialAction.textContent = `${this.name} tore down the stable.`;
             } else {
