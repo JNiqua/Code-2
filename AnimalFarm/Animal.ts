@@ -36,7 +36,7 @@ namespace Farm {
         doSpecialAction(): void {
             // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             // specialAction.textContent = "wörk?";
-        
+        }
     }
 }
 
