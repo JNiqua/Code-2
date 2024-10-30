@@ -14,7 +14,7 @@ var Farm;
     stable.push(pig);
     const sheep = new Farm.Sheep("Esmeralda", "Sheep", "Baaah", hay, 4, true);
     stable.push(sheep);
-    const whale = new Farm.Whale("Angela", "Whale", "Ooof", krill, 7, true);
+    const whale = new Farm.Whale("Angela", "Whale", "Ooof", krill, 7, false);
     stable.push(whale);
     let count = 0;
     callAnimal();
