@@ -7,7 +7,7 @@ var Farm;
             this.crazy = _crazy;
         }
         doSpecialAction() {
-            let specialAction = document.getElementById("specialAction");
+            const specialAction = document.getElementById("specialAction");
             if (this.crazy) {
                 specialAction.textContent = `${this.name} tried to revive its food.`;
             }

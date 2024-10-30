@@ -7,8 +7,8 @@ namespace Farm {
             this.tired = _tired;
         }
 
-        public doSpecialAction(): void {
-            let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+        doSpecialAction(): void {
+            const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.tired) {
                 specialAction.textContent = `${this.name} slept all day.`;
             } else {

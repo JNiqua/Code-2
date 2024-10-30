@@ -7,7 +7,7 @@ var Farm;
             this.cool = _cool;
         }
         doSpecialAction() {
-            let specialAction = document.getElementById("specialAction");
+            const specialAction = document.getElementById("specialAction");
             if (this.cool) {
                 specialAction.textContent = `${this.name} put on shades.`;
             }

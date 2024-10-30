@@ -7,8 +7,8 @@ namespace Farm {
             this.sad = _sad;
         }
 
-        public doSpecialAction() {
-            let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+        doSpecialAction(): void {
+            const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.sad) {
                 specialAction.textContent = `${this.name} got depressed.`;
             } else {

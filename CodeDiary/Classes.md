@@ -22,13 +22,12 @@ class Vector {
 }
 
 let vector: Vector = new Vector(5, 7);
-
 ```
 
-Eine Instanz einer Klasse heißt Objekt.
-Funktionen innerhalb von Klassen heißen Methoden.
-Der ```constructor {}``` ist eine besondere Methode, die automatisch aufgerufen wird, wenn mit ```new``` ein neues Objekt erstellt wird und sorgt dafür, dass das Objekt ordentlich gebaut wird.
-Jede Klasse und Subklasse wird in einem eigenen Dokument erstellt, welches den Namen der Klasse trägt. Damit der Compiler alle Dokumente finden kann, müssen sie alle den gleichen ```namespace {}``` haben.
+* Eine Instanz einer Klasse heißt Objekt.
+* Funktionen innerhalb von Klassen heißen Methoden.
+* Der ```constructor {}``` ist eine besondere Methode, die automatisch aufgerufen wird, wenn mit ```new``` ein neues Objekt erstellt wird und sorgt dafür, dass das Objekt ordentlich gebaut wird.
+* Jede Klasse und Subklasse wird in einem eigenen Dokument erstellt, welches den Namen der Klasse trägt. Damit der Compiler alle Dokumente finden kann, müssen sie alle den gleichen ```namespace {}``` haben.
 
 ### Beispiel für eine Klasse und deren Subklasse
 ```
@@ -84,7 +83,7 @@ namespace Farm {
             this.cool = _cool;
         }
 
-        public doSpecialAction(): void {
+        doSpecialAction(): void {
             let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.cool) {
                 specialAction.textContent = `${this.name} put on shades.`;
