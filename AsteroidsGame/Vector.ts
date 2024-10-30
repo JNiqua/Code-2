@@ -30,9 +30,8 @@ namespace Asteroids {
             this.scale(length);
         }
 
-        copy(_vector: Vector): Vector {
-            let vectorCopy: Vector = new Vector(_vector.x, _vector.y);
-            return vectorCopy;
+        copy(): Vector {
+            return new Vector(this.x, this.y);
         }
     }
 }

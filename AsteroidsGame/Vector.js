@@ -23,6 +23,9 @@ var Asteroids;
             this.set(Math.cos(direction), Math.sin(direction));
             this.scale(length);
         }
+        copy() {
+            return new Vector(this.x, this.y);
+        }
     }
     Asteroids.Vector = Vector;
 })(Asteroids || (Asteroids = {}));

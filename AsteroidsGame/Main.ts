@@ -4,6 +4,7 @@ namespace Asteroids {
     export let crc2: CanvasRenderingContext2D;
 
     let asteroids: Asteroid[] = [];
+    let projectile: Projectile;
 
     function handleLoad(_event: Event): void {
         console.log("Asteroids starting");
@@ -22,12 +23,19 @@ namespace Asteroids {
         createAsteroids(5);
         // createShip();
 
-        // canvas.addEventListener("mousedown", loadLaser);
+        canvas.addEventListener("mousedown", shootProjectile);
         canvas.addEventListener("mouseup", shootLaser);
         // canvas.addEventListener("keypress", handleKeypress);
         // canvas.addEventListener("mousemove", setHeading);
 
         window.setInterval(update, 20);
+    }
+
+    function shootProjectile(_event: MouseEvent): void {
+        let origin: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
+        let velocity: Vector = new Vector(0, 0);
+        velocity.random(100, 100);
+        projectile = new Projectile(origin, velocity);
     }
 
     function shootLaser(_event: MouseEvent): void {
@@ -80,6 +88,8 @@ namespace Asteroids {
             asteroid.draw();
         }
 
+        projectile.move(1/50);
+        projectile.draw();
         // ship.draw();
         // handleCollisions();
     }
