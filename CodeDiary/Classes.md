@@ -26,8 +26,8 @@ let vector: Vector = new Vector(5, 7);
 
 * Eine Instanz einer Klasse heißt Objekt.
 * Funktionen innerhalb von Klassen heißen Methoden.
-* Der ```constructor {}``` ist eine besondere Methode, die automatisch aufgerufen wird, wenn mit ```new``` ein neues Objekt erstellt wird und sorgt dafür, dass das Objekt ordentlich gebaut wird.
-* Jede Klasse und Subklasse wird in einem eigenen Dokument erstellt, welches den Namen der Klasse trägt. Damit der Compiler alle Dokumente finden kann, müssen sie alle den gleichen ```namespace {}``` haben.
+* Der ```constructor()``` ist eine besondere Methode, die automatisch aufgerufen wird, wenn mit ```new``` ein neues Objekt erstellt wird und sorgt dafür, dass das Objekt ordentlich gebaut wird.
+* Jede Klasse und Subklasse wird in einem eigenen Dokument erstellt, welches den Namen der Klasse trägt. Damit der Compiler alle Dokumente finden kann, müssen sie alle den gleichen ```namespace``` haben.
 
 ### Beispiel für eine Klasse und deren Subklasse
 ```
@@ -62,13 +62,11 @@ namespace Farm {
         eat(): void {
             const food: HTMLSpanElement = document.getElementById("food")!;
             const foodAmount: number = this.food.storageAmount - this.consumeAmount;
-            // food.innerText = fouod.toString();
             food.textContent = `${this.food.type}: ${foodAmount}`;
         }
 
         doSpecialAction(): void {
-            // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
-            // specialAction.textContent = "wörk?";
+
         }
     }
 }
@@ -84,7 +82,7 @@ namespace Farm {
         }
 
         doSpecialAction(): void {
-            let specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
+            const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
             if(this.cool) {
                 specialAction.textContent = `${this.name} put on shades.`;
             } else {
@@ -94,6 +92,7 @@ namespace Farm {
     }
 }
 ```
-```extends``` erweitert eine Superklasse um eine Subklasse.
-```super(...)``` ruft aus der Subklasse den Constructor der Superklasse auf.
-```super.methode(...)``` ruft aus der Subklasse die ```methode``` der Superklasse auf.
+* ```extends``` erweitert eine Superklasse um eine Subklasse.
+* ```super(...)``` ruft aus der Subklasse den Constructor der Superklasse auf.
+* ```super.methode(...)``` ruft aus der Subklasse die ```methode``` der Superklasse auf.
+* Eine Subklasse erbt alle Eigenschaften und Fähigkeiten der Superklasse, kann aber auch eigene Eigenschaften und Fähigkeiten haben, die die Superklasse nicht besitzt.

@@ -29,13 +29,11 @@ namespace Farm {
         eat(): void {
             const food: HTMLSpanElement = document.getElementById("food")!;
             const foodAmount: number = this.food.storageAmount - this.consumeAmount;
-            // food.innerText = fouod.toString();
             food.textContent = `${this.food.type}: ${foodAmount}`;
         }
 
         doSpecialAction(): void {
-            // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
-            // specialAction.textContent = "wörk?";
+            
         }
     }
 }

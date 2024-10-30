@@ -21,12 +21,9 @@ var Farm;
         eat() {
             const food = document.getElementById("food");
             const foodAmount = this.food.storageAmount - this.consumeAmount;
-            // food.innerText = fouod.toString();
             food.textContent = `${this.food.type}: ${foodAmount}`;
         }
         doSpecialAction() {
-            // const specialAction: HTMLSpanElement = document.getElementById("specialAction")!;
-            // specialAction.textContent = "wörk?";
         }
     }
     Farm.Animal = Animal;
