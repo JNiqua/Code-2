@@ -49,7 +49,7 @@ namespace SolarSystem {
             crc2.translate(this.orbitRadius, 0);
             crc2.fillStyle = this.color;
             crc2.beginPath();
-            crc2.ellipse(0, 0, this.size, this.size, 0, 0, 5);
+            crc2.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI*2);
             crc2.closePath();
             crc2.fill();
             

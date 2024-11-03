@@ -38,7 +38,7 @@ var SolarSystem;
             SolarSystem.crc2.translate(this.orbitRadius, 0);
             SolarSystem.crc2.fillStyle = this.color;
             SolarSystem.crc2.beginPath();
-            SolarSystem.crc2.ellipse(0, 0, this.size, this.size, 0, 0, 5);
+            SolarSystem.crc2.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI * 2);
             SolarSystem.crc2.closePath();
             SolarSystem.crc2.fill();
             for (let child of this.children) {
