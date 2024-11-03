@@ -3,24 +3,7 @@ var SolarSystem;
 (function (SolarSystem) {
     class Body {
         constructor(_name, _color, _size, _velocity, _orbitRadius, _children) {
-            // move(_timeslice: number): void {
-            //     crc2.save();
-            //     crc2.rotate(_timeslice*this.velocity);
-            //     crc2.translate(this.orbitRadius, 0);
-            //     crc2.restore();
-            //     for(let child of this.children) {
-            //         child.move(_timeslice);
-            //     }
-            // }
-            // draw(): void {
-            //     crc2.fillStyle = this.color;
-            //     crc2.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI*2);
-            //     crc2.fill();
-            //     for(let child of this.children) {
-            //         child.draw();
-            //         // crc2.fillStyle = child.color;
-            //     }
-            // }
+            this.path = new Path2D;
             this.absoluteRotation = 0;
             this.name = _name;
             this.color = _color;
@@ -32,22 +15,30 @@ var SolarSystem;
         update(_timeslice) {
             let relativeRotation = _timeslice * this.velocity;
             this.absoluteRotation = this.absoluteRotation + relativeRotation;
-            // crc2.restore();
             SolarSystem.crc2.rotate(this.absoluteRotation * Math.PI / 180);
-            // crc2.save();
             SolarSystem.crc2.translate(this.orbitRadius, 0);
             SolarSystem.crc2.fillStyle = this.color;
-            SolarSystem.crc2.beginPath();
-            SolarSystem.crc2.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI * 2);
-            SolarSystem.crc2.closePath();
-            SolarSystem.crc2.fill();
+            // crc2.beginPath();
+            this.path.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI * 2);
+            // crc2.closePath();
+            SolarSystem.crc2.fill(this.path);
             for (let child of this.children) {
                 SolarSystem.crc2.save();
                 child.update(_timeslice);
                 SolarSystem.crc2.restore();
             }
+            // console.log(this.absoluteRotation);
         }
-        showInfo() {
+        showInfo(_mouseX, _mouseY) {
+            const bodyName = document.getElementById("bodyName");
+            if (SolarSystem.crc2.isPointInPath(this.path, _mouseX, _mouseY)) {
+                bodyName.textContent = this.name;
+            }
+            for (let child of this.children) {
+                if (SolarSystem.crc2.isPointInPath(child.path, _mouseX, _mouseY)) {
+                    bodyName.textContent = child.name;
+                }
+            }
         }
     }
     SolarSystem.Body = Body;

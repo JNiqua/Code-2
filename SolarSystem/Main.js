@@ -3,8 +3,29 @@ var SolarSystem;
 (function (SolarSystem) {
     const canvas = document.querySelector("canvas");
     SolarSystem.crc2 = canvas.getContext("2d");
-    SolarSystem.crc2.translate(canvas.width / 2, canvas.height / 2);
-    let Planets = [];
+    const speedSlider = document.getElementById("speedSlider");
+    speedSlider.addEventListener("input", hndSliderInput);
+    canvas.addEventListener("click", hndMouseInput);
+    let rotationSpeed = 1; //set initial rotation speed
+    SolarSystem.crc2.translate(canvas.width / 2, canvas.height / 2); //translate coordinate system center to center of canvas
+    requestAnimationFrame(animate);
+    function hndSliderInput() {
+        const value = Number(speedSlider.value) / 5; //divide slider value (0-100) for smoother input
+        rotationSpeed = value;
+    }
+    function hndMouseInput(_event) {
+        let mouseX = _event.clientX;
+        let mouseY = _event.clientY;
+        sun.showInfo(mouseX, mouseY);
+    }
+    function animate() {
+        SolarSystem.crc2.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        SolarSystem.crc2.fillStyle = "black";
+        SolarSystem.crc2.fillRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        sun.update(rotationSpeed);
+        requestAnimationFrame(animate);
+    }
+    let Planets = []; //create arrays for bodies (planets and moons)
     // let MercuryMoons: Body[] = [];
     // let VenusMoons: Body[] = [];
     let EarthMoons = [];
@@ -14,7 +35,7 @@ var SolarSystem;
     let UranusMoons = [];
     let NeptuneMoons = [];
     let Empty = [];
-    let sun = new SolarSystem.Body("Sun", "yellow", 30, 0, 0, Planets);
+    let sun = new SolarSystem.Body("Sun", "yellow", 30, 0, 0, Planets); //create all bodies (sun, planets and moons) and push them in their respective arrays
     let mercury = new SolarSystem.Body("Mercury", "gainsboro", 3, 0.26, 55, Empty);
     Planets.push(mercury);
     let venus = new SolarSystem.Body("Venus", "moccasin", 8, 0.23, 80, Empty);
@@ -73,16 +94,5 @@ var SolarSystem;
     UranusMoons.push(uranusMoon5);
     let neptuneMoon = new SolarSystem.Body("Triton", "grey", 2, 0.3, 17, Empty);
     NeptuneMoons.push(neptuneMoon);
-    requestAnimationFrame(update);
-    function update() {
-        SolarSystem.crc2.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-        SolarSystem.crc2.fillStyle = "black";
-        SolarSystem.crc2.fillRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-        // crc2.save();
-        sun.update(1);
-        // crc2.restore();
-        // jupiter.update(1);
-        requestAnimationFrame(update);
-    }
 })(SolarSystem || (SolarSystem = {}));
 //# sourceMappingURL=Main.js.map
