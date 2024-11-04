@@ -7,7 +7,7 @@ namespace SolarSystem {
         orbitRadius: number;
         children: Body[];
         
-        path: Path2D = new Path2D;
+        path: Path2D = new Path2D();
         absoluteRotation: number = 0;
         
         constructor(_name: string, _color: string, _size: number, _velocity: number, _orbitRadius: number, _children: Body[]) {
@@ -27,9 +27,7 @@ namespace SolarSystem {
             crc2.translate(this.orbitRadius, 0);
 
             crc2.fillStyle = this.color;
-            // crc2.beginPath();
             this.path.ellipse(0, 0, this.size, this.size, 0, 0, Math.PI*2);
-            // crc2.closePath();
             crc2.fill(this.path);
             
             for(const child of this.children) {
