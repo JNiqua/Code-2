@@ -1,15 +1,33 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var SolarSystem;
 (function (SolarSystem) {
-    const canvas = document.querySelector("canvas");
-    SolarSystem.crc2 = canvas.getContext("2d");
-    const speedSlider = document.getElementById("speedSlider");
-    speedSlider.addEventListener("input", hndSliderInput);
-    canvas.addEventListener("click", hndMouseInput);
+    window.addEventListener("load", start);
     let rotationSpeed = 1; //set initial rotation speed
-    SolarSystem.crc2.translate(canvas.width / 2, canvas.height / 2); //translate coordinate system center to center of canvas
-    const sun = createBodies(SolarSystem.bodyData);
-    requestAnimationFrame(animate);
+    let speedSlider;
+    let sun;
+    function start() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const canvas = document.querySelector("canvas");
+            speedSlider = document.getElementById("speedSlider");
+            speedSlider.addEventListener("input", hndSliderInput);
+            canvas.addEventListener("click", hndMouseInput);
+            SolarSystem.crc2 = canvas.getContext("2d");
+            SolarSystem.crc2.translate(canvas.width / 2, canvas.height / 2); //translate coordinate system center to center of canvas
+            const response = yield fetch("BodyData.json");
+            const bodyData = yield response.json();
+            sun = createBodies(bodyData);
+            requestAnimationFrame(animate);
+        });
+    }
     function hndSliderInput() {
         const value = Number(speedSlider.value) / 5; //divide slider value (0-100) for smoother input
         rotationSpeed = value;
@@ -20,9 +38,9 @@ var SolarSystem;
         sun.showInfo(mouseX, mouseY);
     }
     function animate() {
-        SolarSystem.crc2.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        SolarSystem.crc2.clearRect(-SolarSystem.crc2.canvas.width / 2, -SolarSystem.crc2.canvas.height / 2, SolarSystem.crc2.canvas.width, SolarSystem.crc2.canvas.height);
         SolarSystem.crc2.fillStyle = "black";
-        SolarSystem.crc2.fillRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        SolarSystem.crc2.fillRect(-SolarSystem.crc2.canvas.width / 2, -SolarSystem.crc2.canvas.height / 2, SolarSystem.crc2.canvas.width, SolarSystem.crc2.canvas.height);
         sun.update(rotationSpeed);
         requestAnimationFrame(animate);
     }
@@ -113,6 +131,8 @@ var SolarSystem;
 
     const neptuneMoon: Body = new Body("Triton", "grey", 2, 0.3, 17, empty);
     neptuneMoons.push(neptuneMoon);
+
+    cosole.log(JSON.stringify(sun));
     */
 })(SolarSystem || (SolarSystem = {}));
 //# sourceMappingURL=Main.js.map

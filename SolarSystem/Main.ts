@@ -1,17 +1,38 @@
 namespace SolarSystem {
-    const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
-    export const crc2: CanvasRenderingContext2D = canvas.getContext("2d")!;
-    
-    const speedSlider: HTMLInputElement = <HTMLInputElement>document.getElementById("speedSlider");
-    speedSlider.addEventListener("input", hndSliderInput);
-    canvas.addEventListener("click", hndMouseInput);
+    window.addEventListener("load", start);
 
     let rotationSpeed: number = 1; //set initial rotation speed
-    
-    crc2.translate(canvas.width/2, canvas.height/2); //translate coordinate system center to center of canvas
+    let speedSlider: HTMLInputElement;
+    let sun: Body;
+    export let crc2: CanvasRenderingContext2D;
 
-    const sun: Body = createBodies(bodyData);
-    requestAnimationFrame(animate);
+    interface BodyData {
+        name: string;
+        color: string;
+        size: number;
+        velocity: number;
+        orbitRadius: number;
+        children: BodyData[];
+    }
+
+    async function start(): Promise<void> {
+        const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
+        
+        speedSlider = <HTMLInputElement>document.getElementById("speedSlider");
+        speedSlider.addEventListener("input", hndSliderInput);
+        canvas.addEventListener("click", hndMouseInput);
+        
+        crc2 = canvas.getContext("2d")!;
+        crc2.translate(canvas.width/2, canvas.height/2); //translate coordinate system center to center of canvas
+        
+        const response: Response = await fetch("BodyData.json");
+        const bodyData: BodyData = await response.json();
+        sun = createBodies(bodyData);
+        
+        requestAnimationFrame(animate);
+    }
+
+    
     
     function hndSliderInput(): void { //control rotation speed with slider input
         const value: number = Number(speedSlider.value)/5; //divide slider value (0-100) for smoother input
@@ -25,9 +46,9 @@ namespace SolarSystem {
     }
     
     function animate(): void {
-        crc2.clearRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+        crc2.clearRect(-crc2.canvas.width/2, -crc2.canvas.height/2, crc2.canvas.width, crc2.canvas.height);
         crc2.fillStyle = "black";
-        crc2.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+        crc2.fillRect(-crc2.canvas.width/2, -crc2.canvas.height/2, crc2.canvas.width, crc2.canvas.height);
         
         sun.update(rotationSpeed);
         requestAnimationFrame(animate);
@@ -121,5 +142,7 @@ namespace SolarSystem {
 
     const neptuneMoon: Body = new Body("Triton", "grey", 2, 0.3, 17, empty);
     neptuneMoons.push(neptuneMoon);
+
+    cosole.log(JSON.stringify(sun));
     */
 }
