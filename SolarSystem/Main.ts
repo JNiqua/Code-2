@@ -10,6 +10,7 @@ namespace SolarSystem {
     
     crc2.translate(canvas.width/2, canvas.height/2); //translate coordinate system center to center of canvas
 
+    const sun: Body = createBodies(bodyData);
     requestAnimationFrame(animate);
     
     function hndSliderInput(): void { //control rotation speed with slider input
@@ -31,7 +32,16 @@ namespace SolarSystem {
         sun.update(rotationSpeed);
         requestAnimationFrame(animate);
     }
-    
+
+    function createBodies(_data: BodyData): Body {
+        const body: Body = new Body(_data);
+        
+        for(const child of _data.children) {
+            body.addChild(createBodies(child));
+        }
+        return body;
+    }
+    /*
     const planets: Body[] = []; //create arrays for bodies (planets and moons)
 
     // const MercuryMoons: Body[] = [];
@@ -111,4 +121,5 @@ namespace SolarSystem {
 
     const neptuneMoon: Body = new Body("Triton", "grey", 2, 0.3, 17, empty);
     neptuneMoons.push(neptuneMoon);
+    */
 }
