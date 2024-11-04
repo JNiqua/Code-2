@@ -6,7 +6,10 @@ namespace SolarSystem {
         velocity: number;
         orbitRadius: number;
         children: Body[];
-
+        
+        path: Path2D = new Path2D;
+        absoluteRotation: number = 0;
+        
         constructor(_name: string, _color: string, _size: number, _velocity: number, _orbitRadius: number, _children: Body[]) {
             this.name = _name;
             this.color = _color;
@@ -16,11 +19,8 @@ namespace SolarSystem {
             this.children = _children;
         }
         
-        path: Path2D = new Path2D;
-        absoluteRotation: number = 0;
-        
         update(_timeslice: number): void {
-            let relativeRotation: number = _timeslice*this.velocity;
+            const relativeRotation: number = _timeslice*this.velocity;
             this.absoluteRotation = this.absoluteRotation + relativeRotation;
 
             crc2.rotate(this.absoluteRotation * Math.PI/180);
@@ -32,7 +32,7 @@ namespace SolarSystem {
             // crc2.closePath();
             crc2.fill(this.path);
             
-            for(let child of this.children) {
+            for(const child of this.children) {
                 crc2.save();
                 child.update(_timeslice);
                 crc2.restore();
@@ -45,13 +45,14 @@ namespace SolarSystem {
 
             if(crc2.isPointInPath(this.path, _mouseX, _mouseY)) {
                 bodyName.textContent = this.name;
-            }
-
-            for(let child of this.children) {
-                if(crc2.isPointInPath(child.path, _mouseX, _mouseY)) {
-                    bodyName.textContent = child.name;
+            } else {
+                for(const child of this.children) {
+                    if(crc2.isPointInPath(child.path, _mouseX, _mouseY)) {
+                        bodyName.textContent = child.name;
+                    }
                 }
             }
+
         }
     }
 }
