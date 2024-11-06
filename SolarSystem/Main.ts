@@ -6,7 +6,7 @@ namespace SolarSystem {
     let sun: Body;
     export let crc2: CanvasRenderingContext2D;
 
-    interface BodyData {
+    export interface BodyData {
         name: string;
         color: string;
         size: number;
